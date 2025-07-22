@@ -127,10 +127,10 @@ public class Clock : MonoBehaviour {
 			}
 
 			for (int i = 0; i < count; i++) {
-                // 3-1. bird swing
-                SoundCuckoo.Play();
-
-                t = 0.0f;
+		                // 3-1. bird swing
+		                SoundCuckoo.Play();
+		
+		                t = 0.0f;
 				while (t < 0.4f) {
 					t += Time.deltaTime;
 					bird.Rotate(
