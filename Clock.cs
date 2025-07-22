@@ -67,8 +67,8 @@ public class Clock : MonoBehaviour {
 		}
 		else {
 			ang = -90.0f + time.Second * secondsToDegrees;
-            seconds.localRotation = Quaternion.Euler(ang, 0f, 0f);
-        }
+            		seconds.localRotation = Quaternion.Euler(ang, 0f, 0f);
+        	}
 
 		// pendlum control
 		if (time.Second < last_sec || trigger) {
