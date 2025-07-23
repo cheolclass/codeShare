@@ -24,7 +24,7 @@ public class AudioMngr : MonoBehaviour
 
     }
 
-    public void PlayBGM(int idx)
+    public void PlayBGM(int idx) // 배경음
     {
         if (currentBGM != idx && idx >= 0 && bgms.Count > idx)
         {
@@ -35,7 +35,7 @@ public class AudioMngr : MonoBehaviour
         }
     }
 
-    public void PlaySound(int idx)
+    public void PlaySound(int idx) // 효과음 
     {
         if (idx >= 0 && effects.Count > idx)
         {
