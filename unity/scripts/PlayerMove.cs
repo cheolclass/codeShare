@@ -44,7 +44,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (moveLeft)
         {
-            //playerRB.AddForce(Vector3.left * POWER);
+            //playerRB.AddForce(Vector3.left * POWER); // legacy style
             playerRB.linearVelocity = Vector3.left * POWER;
         }
         if (moveRight)
