@@ -39,8 +39,8 @@ public class AudioMngr : MonoBehaviour
     {
         if (idx >= 0 && effects.Count > idx)
         {
-            //sourceSound.clip = effects[idx];
-            sourceSound.PlayOneShot(effects[idx]); // 지정한 오디오 클립을 짧게 한 번만 재생
+            //sourceSound.clip = effects[idx]; // 기존 clip을 변경 않음. clip 설정 없이 바로 재생.
+            sourceSound.PlayOneShot(effects[idx]); // 지정한 오디오 클립을 짧게 한 번만 재생. 주로 총소리, 버튼 클릭 등의 효과음.
         }
     }
 
