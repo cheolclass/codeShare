@@ -40,7 +40,7 @@ public class AudioMngr : MonoBehaviour
         if (idx >= 0 && effects.Count > idx)
         {
             //sourceSound.clip = effects[idx];
-            sourceSound.PlayOneShot(effects[idx]);
+            sourceSound.PlayOneShot(effects[idx]); // 지정한 오디오 클립을 짧게 한 번만 재생
         }
     }
 
