@@ -5,7 +5,7 @@ using UnityEngine;
 public class Clock : MonoBehaviour {
 	
 	private const float
-	hoursToDegrees = -360f / 12f,
+	hoursToDegrees = -360f / 12f,	// 시/분/초 침의 회전 방향 => 시계 방향(음(-)의 방향)
 	minutesToDegrees = -360f / 60f,
 	secondsToDegrees = -360f / 60f,
 
@@ -55,8 +55,8 @@ public class Clock : MonoBehaviour {
 		float ang;
 		DateTime time = DateTime.Now;
 		TimeSpan timespan = DateTime.Now.TimeOfDay;
-
-		ang = -90.0f+(float)timespan.TotalHours * hoursToDegrees;
+		
+		ang = -90.0f+(float)timespan.TotalHours * hoursToDegrees; // 시/분/초 침의 회전 방향 => 시계 방향(음(-)의 방향)
 		hours.localRotation = Quaternion.Euler(ang, 0f, 0f);
 		ang = -90.0f+(float)timespan.TotalMinutes * minutesToDegrees;
 		minutes.localRotation = Quaternion.Euler(ang, 0f, 0f);
