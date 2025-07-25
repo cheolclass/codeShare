@@ -46,7 +46,7 @@ public class Clock : MonoBehaviour {
 
 		last_sec = 0.0f;
 		bird_active = false;
-		StartCoroutine(PlayCuckoo());
+		StartCoroutine(PlayCuckoo()); // 시작시, 일단 한 번 보여주고...
 
 		trigger = false;
 	}
