@@ -28,10 +28,6 @@ public class Clock : MonoBehaviour {
     public AudioSource SoundClose;
 
 
-	/**
-	* Hello
-	** WOrld
-	*/
 	public bool analog;
 	public bool trigger;
 
