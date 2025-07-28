@@ -8,8 +8,6 @@ public class Clock : MonoBehaviour {
 	hoursToDegrees = -360f / 12f,	// 시/분/초 침의 회전 방향 => 시계 방향(음(-)의 방향)
 	minutesToDegrees = -360f / 60f,
 	secondsToDegrees = -360f / 60f,
-#테스트
-	##테스트
 	
 	speed = 3.0f,	// swing speed
 	swing = 20.0f,	// swing angle
