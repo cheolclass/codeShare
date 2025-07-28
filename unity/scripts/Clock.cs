@@ -28,7 +28,11 @@ public class Clock : MonoBehaviour {
     public AudioSource SoundClose;
 
 
-    public bool analog;
+	/**
+	* Hello
+	** WOrld
+	*/
+	public bool analog;
 	public bool trigger;
 
 	// bird movement
