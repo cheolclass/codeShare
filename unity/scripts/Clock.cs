@@ -2,6 +2,18 @@
 using System.Collections;
 using UnityEngine;
 
+/*
+		! @brief 두 정수를 더하는 함수입니다.
+		// hello 
+		? @param a 첫 번째 정수
+		>> hello man
+		* param b 두 번째 정수
+		^ return 두 정수의 합
+		~ hello
+		todo Colorful
+		 
+*/
+
 public class Clock : MonoBehaviour {
 	
 	private const float
