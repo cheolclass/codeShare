@@ -1,0 +1,89 @@
+{
+    "workbench.colorTheme": "Default Light Modern",
+    "remoteHub.commitDirectlyWarning": "off",
+    "git.openRepositoryInParentFolders": "never",
+    "git.suggestSmartCommit": false,
+    "notebook.lineNumbers": "on",
+    "editor.wordWrap": "on",
+    "window.zoomLevel": 2,
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "jupyter.askForKernelRestart": false,
+    "files.autoSave": "onFocusChange",
+    "workbench.settings.applyToAllProfiles": [
+    ],    
+    "editor.tokenColorCustomizations": {
+        "comments": {
+          "foreground": "#f817d6",
+          "fontStyle": "bold"
+        }
+    },
+    "colorful-comments.tags": [
+    {
+      "tag": ">>",
+      "color": "#ff0067",
+      "strikethrough": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "!",
+      "color": "#FF0000",
+      "strikethrough": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "?",
+      "color": "#0076FF",
+      "strikethrough": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    
+    {
+      "tag": "^",
+      "color": "#EAF622",
+      "strikethrough": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "*",
+      "color": "#08e605",
+      "strikethrough": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "&", 
+      "color": "#FF06A0",
+      "strikethrough": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "~",
+      "color": "#BE00FF",
+      "strikethrough": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "todo",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    }
+  ],
+  "editor.fontFamily": "D2Coding, Arial, Consolas, 'Courier New', monospace"
+ 
+}
