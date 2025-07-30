@@ -7,14 +7,20 @@ using UnityEngine;
 		// hello 
 		? @param a 첫 번째 정수
 		>> hello man
-		* param b 두 번째 정수
+		* param b 두 번째 정수 asdfasdasdf sdfsdf
+		sdfsdf
+		asdfasdfsadf
 		^ return 두 정수의 합
 		~ hello
 		todo Colorful
+		>1 sadf
+		>2 fdasf
+		>3
+		>> hello
 		 
 */
 
-public class Clock : MonoBehaviour {
+public class Clock : MonoBehaviour { 
 	
 	private const float
 	hoursToDegrees = -360f / 12f,	// 시/분/초 침의 회전 방향 => 시계 방향(음(-)의 방향)
@@ -39,7 +45,6 @@ public class Clock : MonoBehaviour {
     public AudioSource SoundOpen;
     public AudioSource SoundClose;
 
-
 	public bool analog;
 	public bool trigger;
 
@@ -63,13 +68,17 @@ public class Clock : MonoBehaviour {
 		trigger = false;
 	}
 
+	// >3 sdf
+	// "#11dea1ff"
+	
 	void Update () {
 		float ang;
 		DateTime time = DateTime.Now;
 		TimeSpan timespan = DateTime.Now.TimeOfDay;
 		
-		ang = -90.0f+(float)timespan.TotalHours * hoursToDegrees; // 시/분/초 침의 회전 방향 => 시계 방향(음(-)의 방향)
+		ang = -90.0f+(float)timespan.TotalHours * hoursToDegrees; // >> 시/분/초 침의 회전 방향 => 시계 방향(음(-)의 방향)
 		hours.localRotation = Quaternion.Euler(ang, 0f, 0f);
+		
 		ang = -90.0f+(float)timespan.TotalMinutes * minutesToDegrees;
 		minutes.localRotation = Quaternion.Euler(ang, 0f, 0f);
 
