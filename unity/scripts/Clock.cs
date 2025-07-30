@@ -3,13 +3,13 @@ using System.Collections;
 using UnityEngine;
 
 /* Comment colors
-	// >1
-	// >2
-	// >3
-	// >4 
-	// >5
-	// >6
-	// >7
+	// R.
+	// G.
+	// B.
+	// P. 
+	// T.	tomato
+	// Y.
+	// O.	orange
 	// >> 	
 	// "#11dea1ff"	
 */
@@ -70,30 +70,30 @@ public class Clock : MonoBehaviour
 		TimeSpan timespan = DateTime.Now.TimeOfDay; // time vs. timespan 차이 
 
 		ang = -90.0f + (float)timespan.TotalHours * hoursToDegrees; // >> 시/분/초 침의 회전 방향 => 시계 방향(음(-)의 방향)
-		hours.localRotation = Quaternion.Euler(ang, 0f, 0f);    // 사원수 
+		hours.localRotation = Quaternion.Euler(ang, 0f, 0f);    // 시, 사원수, Euler angle의  Gimbal-lock 문제
 
 		ang = -90.0f + (float)timespan.TotalMinutes * minutesToDegrees;
-		minutes.localRotation = Quaternion.Euler(ang, 0f, 0f);
+		minutes.localRotation = Quaternion.Euler(ang, 0f, 0f);  // 분
 
 		if (analog) // 침의 움직임이 더 부드럽다
 		{
 			ang = -90.0f + (float)timespan.TotalSeconds * secondsToDegrees;
-			seconds.localRotation = Quaternion.Euler(ang, 0f, 0f);
+			seconds.localRotation = Quaternion.Euler(ang, 0f, 0f);  // 초1
 		}
 		else
 		{
 			ang = -90.0f + time.Second * secondsToDegrees; //B. DateTime time 
-			seconds.localRotation = Quaternion.Euler(ang, 0f, 0f);
+			seconds.localRotation = Quaternion.Euler(ang, 0f, 0f);  // 초2
 		}
 
-		// pendlum control
-		if (time.Second < last_sec || trigger)
-		{
+		if (time.Second < last_sec || trigger)  //G. trigger = true; 설정 => 오직 InspV에서.
+		{                                       //G.  time.Second < last_sec 이경우는 초침이 59 => 0으로 넘어갈때. 즉 매 정각에 뻐꾸기 등장
 			StartCoroutine(PlayCuckoo());
 			trigger = false;
 		}
 		last_sec = time.Second;
 
+		// pendlum control
 		t += Time.deltaTime * speed;
 		ang = -90.0f + Mathf.Sin(t) * swing;
 		pendlum.localRotation = Quaternion.Euler(ang, 0f, 0f);
