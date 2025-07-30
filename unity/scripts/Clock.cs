@@ -2,22 +2,16 @@
 using System.Collections;
 using UnityEngine;
 
-/*
-		! @brief 두 정수를 더하는 함수입니다.
-		// hello 
-		? @param a 첫 번째 정수
-		>> hello man
-		* param b 두 번째 정수 asdfasdasdf sdfsdf
-		sdfsdf
-		asdfasdfsadf
-		^ return 두 정수의 합
-		~ hello
-		todo Colorful
-		>1 sadf
-		>2 fdasf
-		>3
-		>> hello
-		 
+/* Comment colors
+	// >1
+	// >2
+	// >3
+	// >4 
+	// >5
+	// >6
+	// >7
+	// >> 	
+	// "#11dea1ff"	
 */
 
 public class Clock : MonoBehaviour { 
@@ -68,9 +62,6 @@ public class Clock : MonoBehaviour {
 		trigger = false;
 	}
 
-	// >3 sdf
-	// "#11dea1ff"
-	
 	void Update () {
 		float ang;
 		DateTime time = DateTime.Now;
