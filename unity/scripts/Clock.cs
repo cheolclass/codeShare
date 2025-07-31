@@ -71,6 +71,7 @@ public class Clock : MonoBehaviour
 
 		ang = -90.0f + (float)timespan.TotalHours * hoursToDegrees; // >> 시/분/초 침의 회전 방향 => 시계 방향(음(-)의 방향)
 		hours.localRotation = Quaternion.Euler(ang, 0f, 0f);    // 시, 사원수, Euler angle의  Gimbal-lock 문제
+																// 자신의 Pivot(자신의 원점)을 기준으로 시침을 회전
 
 		ang = -90.0f + (float)timespan.TotalMinutes * minutesToDegrees;
 		minutes.localRotation = Quaternion.Euler(ang, 0f, 0f);  // 분
@@ -78,12 +79,12 @@ public class Clock : MonoBehaviour
 		if (analog) // 침의 움직임이 더 부드럽다
 		{
 			ang = -90.0f + (float)timespan.TotalSeconds * secondsToDegrees;
-			seconds.localRotation = Quaternion.Euler(ang, 0f, 0f);  // 초1
+			seconds.localRotation = Quaternion.Euler(ang, 0f, 0f);  // 부드러운 초침
 		}
 		else
 		{
-			ang = -90.0f + time.Second * secondsToDegrees; //B. DateTime time 
-			seconds.localRotation = Quaternion.Euler(ang, 0f, 0f);  // 초2
+			ang = -90.0f + time.Second * secondsToDegrees; //B. DateTime time. 
+			seconds.localRotation = Quaternion.Euler(ang, 0f, 0f);  // 한 번에 6도씩 회전하는 초침
 		}
 
 		if (time.Second < last_sec || trigger)  //G. trigger = true; 설정 => 오직 InspV에서.
@@ -96,7 +97,7 @@ public class Clock : MonoBehaviour
 		// pendlum control
 		t += Time.deltaTime * speed;
 		ang = -90.0f + Mathf.Sin(t) * swing;
-		pendlum.localRotation = Quaternion.Euler(ang, 0f, 0f);
+		pendlum.localRotation = Quaternion.Euler(ang, 0f, 0f);	// 자신의 Pivot(자신의 원점, 윗쪽 끝)을 기준으로 시계추를 회전
 	}
 
 	IEnumerator PlayCuckoo()
