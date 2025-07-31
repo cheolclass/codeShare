@@ -103,7 +103,11 @@ public class Clock : MonoBehaviour
 		// pendlum control
 		t += Time.deltaTime * speed;
 		ang = -90.0f + Mathf.Sin(t) * swing;
-		// 
+            // 시계추 운동: 각의 크기 = 각속도 x 시간
+            // . //Y. https://docs.google.com/document/d/1uYqFAUUjCjNlp_FarQmD0w9HNfjt4zXerDZbTLshs4Q/edit?tab=t.0#heading=h.35qikxqptuj
+            // 
+
+        
 		pendlum.localRotation = Quaternion.Euler(ang, 0f, 0f);
 			// 자신의 Pivot(자신의 원점, 윗쪽 끝)을 기준으로 시계추를 회전
 	}
