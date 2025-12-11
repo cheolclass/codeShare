@@ -1,6 +1,5 @@
 /// LeftInput.cs
 
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,12 +10,11 @@ public class LeftInput : MonoBehaviour
 
     void Update()
     {
-        float value = myActionValue.action.ReadValue<float>();
-        if(value > 0f)
-            Debug.Log("Left Grip Button Value: " + value);
+        /// 누르거나 뗄 때 모두 출력
+        float value = myActionValue.action.ReadValue<float>();        
+        Debug.Log("Left Grip Button Value: " + value);
 
-        bool buttonPressed = myActionButton.action.IsPressed();
-        if (buttonPressed)
-            Debug.Log("Left Grip Button Pressed: " + buttonPressed);
+        bool buttonPressed = myActionButton.action.IsPressed();        
+        Debug.Log("Left Grip Button Pressed: " + buttonPressed);
     }
 }
