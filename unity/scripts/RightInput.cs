@@ -8,10 +8,6 @@ public class RightInput : MonoBehaviour
     public InputActionProperty myActionValue;
     public InputActionProperty myActionButton;
 
-    void Start()
-    {
-    }
-
     void Update()
     {
         float value = myActionValue.action.ReadValue<float>();
