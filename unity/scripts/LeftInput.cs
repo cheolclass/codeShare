@@ -1,4 +1,4 @@
-// LeftInput.cs
+// LeftInput.cs <= 기존 코드 확장
 
 using UnityEngine;
 using UnityEngine.InputSystem;
