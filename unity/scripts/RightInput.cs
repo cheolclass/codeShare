@@ -10,12 +10,11 @@ public class RightInput : MonoBehaviour
 
     void Update()
     {
+        /// 누르거나 뗄 때 모두 출력
         float value = myActionValue.action.ReadValue<float>();
-        if (value > 0f) 
-            Debug.Log("Right Activate Button Value: " + value);
+        Debug.Log("Right Activate Button Value: " + value);
 
         bool buttonPressed = myActionButton.action.IsPressed();
-        if (buttonPressed)
-            Debug.Log("Right Activate Button Pressed: " + buttonPressed);
+        Debug.Log("Right Activate Button Pressed: " + buttonPressed);
     }
 }
