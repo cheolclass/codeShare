@@ -21,7 +21,7 @@ public class Obstacle : MonoBehaviour
 
 	public void OnDie()
 	{
-		// ¿ÀºêÁ§Æ® Å©±â°¡ 0ÀÌ µÇ¸é ¿ÀºêÁ§Æ® ºñÈ°¼ºÈ­
+		// ì˜¤ë¸Œì íŠ¸ í¬ê¸°ê°€ 0ì´ ë˜ë©´ ì˜¤ë¸Œì íŠ¸ ë¹„í™œì„±í™”
 		spawner.DeactivateObject(gameObject);
 	}
 
@@ -30,11 +30,11 @@ public class Obstacle : MonoBehaviour
 		float moveTime = 2f;
 		float rotateAngle = Random.Range(10f, 720f) * moveTime;
 
-		// È¸Àü(OnRotate) + ÀÌµ¿(OnMove) ½ÃÀÛ
+		// íšŒì „(OnRotate) + ì´ë™(OnMove) ì‹œì‘
 		StartCoroutine(TransformEffect.OnRotate(transform, Vector3.zero, Vector3.forward * rotateAngle, moveTime));
 		yield return StartCoroutine(TransformEffect.OnMove(transform, start, end, moveTime));
 
-		// Å©±â Ãà¼Ò(OnScale) ½ÃÀÛ
+		// í¬ê¸° ì¶•ì†Œ(OnScale) ì‹œì‘
 		StartCoroutine(TransformEffect.OnScale(transform, Vector3.one, Vector3.zero, 0.5f, OnDie));
 	}
 }
