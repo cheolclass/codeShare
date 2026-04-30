@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 public class MemoryPool
 {
-	// ¸Ş¸ğ¸® Ç®·Î °ü¸®µÇ´Â ¿ÀºêÁ§Æ® Á¤º¸
+	// ë©”ëª¨ë¦¬ í’€ë¡œ ê´€ë¦¬ë˜ëŠ” ì˜¤ë¸Œì íŠ¸ ì •ë³´
 	private class PoolItem
 	{
-		public	GameObject	gameObject;		// È­¸é¿¡ º¸ÀÌ´Â ½ÇÁ¦ °ÔÀÓ¿ÀºêÁ§Æ®
-		private	bool		isActive;		// "gameObject"ÀÇ È°¼ºÈ­/ºñÈ°¼ºÈ­ Á¤º¸
+		public	GameObject	gameObject;		// í™”ë©´ì— ë³´ì´ëŠ” ì‹¤ì œ ê²Œì„ì˜¤ë¸Œì íŠ¸
+		private	bool		isActive;		// "gameObject"ì˜ í™œì„±í™”/ë¹„í™œì„±í™” ì •ë³´
 
 		public	bool		IsActive
 		{
@@ -20,17 +20,17 @@ public class MemoryPool
 		}
 	}
 
-	private	int	increaseCount = 5;			// ¿ÀºêÁ§Æ®°¡ ºÎÁ·ÇÒ ¶§ Instantiate()·Î Ãß°¡ »ı¼ºµÇ´Â ¿ÀºêÁ§Æ® °³¼ö
-	private	int	maxCount;					// ÇöÀç ¸®½ºÆ®¿¡ µî·ÏµÇ¾î ÀÖ´Â ¿ÀºêÁ§Æ® °³¼ö
-	private	int	activeCount;				// ÇöÀç °ÔÀÓ¿¡ »ç¿ëµÇ°í ÀÖ´Â(È°¼ºÈ­) ¿ÀºêÁ§Æ® °³¼ö
+	private	int	increaseCount = 5;			// ì˜¤ë¸Œì íŠ¸ê°€ ë¶€ì¡±í•  ë•Œ Instantiate()ë¡œ ì¶”ê°€ ìƒì„±ë˜ëŠ” ì˜¤ë¸Œì íŠ¸ ê°œìˆ˜
+	private	int	maxCount;					// í˜„ì¬ ë¦¬ìŠ¤íŠ¸ì— ë“±ë¡ë˜ì–´ ìˆëŠ” ì˜¤ë¸Œì íŠ¸ ê°œìˆ˜
+	private	int	activeCount;				// í˜„ì¬ ê²Œì„ì— ì‚¬ìš©ë˜ê³  ìˆëŠ”(í™œì„±í™”) ì˜¤ë¸Œì íŠ¸ ê°œìˆ˜
 
-	private	GameObject		poolObject;		// ¿ÀºêÁ§Æ® Ç®¸µ¿¡¼­ °ü¸®ÇÏ´Â °ÔÀÓ ¿ÀºêÁ§Æ® ÇÁ¸®ÆÕ
-	private	List<PoolItem>	poolItemList;	// °ü¸®µÇ´Â ¸ğµç ¿ÀºêÁ§Æ®¸¦ ÀúÀåÇÏ´Â ¸®½ºÆ®
+	private	GameObject		poolObject;		// ì˜¤ë¸Œì íŠ¸ í’€ë§ì—ì„œ ê´€ë¦¬í•˜ëŠ” ê²Œì„ ì˜¤ë¸Œì íŠ¸ í”„ë¦¬íŒ¹
+	private	List<PoolItem>	poolItemList;	// ê´€ë¦¬ë˜ëŠ” ëª¨ë“  ì˜¤ë¸Œì íŠ¸ë¥¼ ì €ì¥í•˜ëŠ” ë¦¬ìŠ¤íŠ¸
 
-	public	int	MaxCount	=> maxCount;	// ¿ÜºÎ¿¡¼­ ÇöÀç ¸®½ºÆ®¿¡ µî·ÏµÇ¾î ÀÖ´Â ¿ÀºêÁ§Æ® °³¼ö È®ÀÎÀ» À§ÇÑ ÇÁ·ÎÆÛÆ¼
-	public	int	ActiveCount	=> activeCount;	// ¿ÜºÎ¿¡¼­ ÇöÀç È°¼ºÈ­ µÇ¾î ÀÖ´Â ¿ÀºêÁ§Æ® °³¼ö È®ÀÎÀ» À§ÇÑ ÇÁ·ÎÆÛÆ¼
+	public	int	MaxCount	=> maxCount;	// ì™¸ë¶€ì—ì„œ í˜„ì¬ ë¦¬ìŠ¤íŠ¸ì— ë“±ë¡ë˜ì–´ ìˆëŠ” ì˜¤ë¸Œì íŠ¸ ê°œìˆ˜ í™•ì¸ì„ ìœ„í•œ í”„ë¡œí¼í‹°
+	public	int	ActiveCount	=> activeCount;	// ì™¸ë¶€ì—ì„œ í˜„ì¬ í™œì„±í™” ë˜ì–´ ìˆëŠ” ì˜¤ë¸Œì íŠ¸ ê°œìˆ˜ í™•ì¸ì„ ìœ„í•œ í”„ë¡œí¼í‹°
 
-	// ¿ÀºêÁ§Æ®°¡ ÀÓ½Ã·Î º¸°üµÇ´Â À§Ä¡
+	// ì˜¤ë¸Œì íŠ¸ê°€ ì„ì‹œë¡œ ë³´ê´€ë˜ëŠ” ìœ„ì¹˜
 	private	Vector3	tempPosition = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
 
 	public MemoryPool(GameObject poolObject)
@@ -77,8 +77,8 @@ public class MemoryPool
 	{
 		if ( poolItemList == null ) return null;
 
-		// ÇöÀç »ı¼ºÇØ¼­ °ü¸®ÇÏ´Â ¸ğµç ¿ÀºêÁ§Æ® °³¼ö¿Í ÇöÀç È°¼ºÈ­ »óÅÂÀÎ ¿ÀºêÁ§Æ® °³¼ö ºñ±³
-		// ¸ğµç ¿ÀºêÁ§Æ®°¡ È°¼ºÈ­ »óÅÂÀÌ¸é »õ·Î¿î ¿ÀºêÁ§Æ® ÇÊ¿ä
+		// í˜„ì¬ ìƒì„±í•´ì„œ ê´€ë¦¬í•˜ëŠ” ëª¨ë“  ì˜¤ë¸Œì íŠ¸ ê°œìˆ˜ì™€ í˜„ì¬ í™œì„±í™” ìƒíƒœì¸ ì˜¤ë¸Œì íŠ¸ ê°œìˆ˜ ë¹„êµ
+		// ëª¨ë“  ì˜¤ë¸Œì íŠ¸ê°€ í™œì„±í™” ìƒíƒœì´ë©´ ìƒˆë¡œìš´ ì˜¤ë¸Œì íŠ¸ í•„ìš”
 		if ( maxCount == activeCount )
 		{
 			InstantiateObjects();
