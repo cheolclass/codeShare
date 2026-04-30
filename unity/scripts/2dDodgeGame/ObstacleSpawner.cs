@@ -5,11 +5,11 @@ public class ObstacleSpawner : MonoBehaviour
 	[SerializeField]
 	private	GameObject	obstaclePrefab;
 	[SerializeField]
-	private	float		currentSpawnTime = 2f;		// Àå¾Ö¹° »ý¼º ÁÖ±â
+	private	float		currentSpawnTime = 2f;		// ìž¥ì• ë¬¼ ìƒì„± ì£¼ê¸°
 	[SerializeField]
-	private	float		minX = -2f, maxX = 2f;		// ¿ÀºêÁ§Æ® »ý¼º/¸ñÇ¥ x À§Ä¡ ¹üÀ§
+	private	float		minX = -2f, maxX = 2f;		// ì˜¤ë¸Œì íŠ¸ ìƒì„±/ëª©í‘œ x ìœ„ì¹˜ ë²”ìœ„
 	[SerializeField]
-	private	float		minY = -2f, maxY = 5.25f;	// ¿ÀºêÁ§Æ® ¸ñÇ¥, »ý¼º y À§Ä¡
+	private	float		minY = -2f, maxY = 5.25f;	// ì˜¤ë¸Œì íŠ¸ ëª©í‘œ, ìƒì„± y ìœ„ì¹˜
 
 	private	MemoryPool	memoryPool;
 	private	float		lastSpawnTime = 0f;
@@ -21,7 +21,7 @@ public class ObstacleSpawner : MonoBehaviour
 
 	private void Update()
 	{
-		// »ý¼º ÁÖ±â(currentSpawnTime) ½Ã°£¸¶´Ù ¿ÀºêÁ§Æ® »ý¼º
+		// ìƒì„± ì£¼ê¸°(currentSpawnTime) ì‹œê°„ë§ˆë‹¤ ì˜¤ë¸Œì íŠ¸ ìƒì„±
 		if ( Time.time - lastSpawnTime > currentSpawnTime )
 		{
 			lastSpawnTime = Time.time;
