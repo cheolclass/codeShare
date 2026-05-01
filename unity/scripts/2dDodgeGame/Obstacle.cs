@@ -17,30 +17,29 @@ public class Obstacle : MonoBehaviour
 
 	private IEnumerator Process(Vector3 start, Vector3 end)
 	{
-		//float moveTime = 2f;
-		//float rotateAngle = Random.Range(10f, 720f) * moveTime;
+		float moveTime = 2f;
+		float rotateAngle = Random.Range(10f, 720f) * moveTime;
 
-		//// 회전(OnRotate) + 이동(OnMove) 시작
-		//yield return StartCoroutine(OnMove(transform, start, end));
-
-		//// 이동이 끝나면 회전 중지 
-		//StartCoroutine(TransformEffect.OnRotate(transform, Vector3.zero, Vector3.forward * rotateAngle, moveTime));
-		//yield return StartCoroutine(TransformEffect.OnMove(transform, start, end, moveTime));
-
-		//// 크기 축소(OnScale) 시작
-		//StartCoroutine(TransformEffect.OnScale(transform, Vector3.one, Vector3.zero, 0.5f, OnDie));
+		// 회전(OnRotate) + 이동(OnMove) 시작
+		StartCoroutine(TransformEffect.OnRotate(transform, 
+			Vector3.zero, Vector3.forward * rotateAngle, moveTime));
+		yield return StartCoroutine(
+			TransformEffect.OnMove(transform, start, end, moveTime));
+		// 크기 축소(OnScale) 시작
+		StartCoroutine(TransformEffect.OnScale(
+			transform, Vector3.one, Vector3.zero, 0.5f, OnDie));
 
 		/// ------------------------------------------
 		///	나중에, TransformEffect 클래스 추가시 
-		///	아래 코드 삭제하고 위 코드 주석 제거 	
+		///	아래 코드 모두 삭제하고 위 코드 주석 제거 	
 		/// ------------------------------------------ 
-		//// 회전(OnRotate) + 이동(OnMove) 시작
-		StartCoroutine(nameof(OnRotate));
-		yield return StartCoroutine(OnMove(start, end));
-		//// 이동이 끝나면 회전 중지 
-		StopCoroutine(nameof(OnRotate));
-		//// 크기 축소(OnScale) 시작
-		yield return StartCoroutine(nameof(OnScale));
+		////// 회전(OnRotate) + 이동(OnMove) 시작
+		//StartCoroutine(nameof(OnRotate));
+		//yield return StartCoroutine(OnMove(start, end));
+		////// 이동이 끝나면 회전 중지 
+		//StopCoroutine(nameof(OnRotate));
+		////// 크기 축소(OnScale) 시작
+		//yield return StartCoroutine(nameof(OnScale));
 	}
 
 	private IEnumerator OnRotate()
@@ -85,15 +84,15 @@ public class Obstacle : MonoBehaviour
 		}
 	}
 
-	//private void Reset()
-	//{
-	//	transform.localScale = Vector3.one;
-	//	transform.rotation = Quaternion.identity;
-	//}
+	private void Reset()
+	{
+		transform.localScale = Vector3.one;
+		transform.rotation = Quaternion.identity;
+	}
 
-	//public void OnDie()
-	//{
-	//	// 오브젝트 크기가 0이 되면 오브젝트 비활성화
-	//	spawner.DeactivateObject(gameObject);
-	//}
+	public void OnDie()
+	{
+		// 오브젝트 크기가 0이 되면 오브젝트 비활성화
+		spawner.DeactivateObject(gameObject);
+	}
 }
