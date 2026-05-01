@@ -4,7 +4,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
 	private	ObstacleSpawner	spawner;
-
+	
 	private void Reset()
 	{
 		transform.localScale = Vector3.one;
