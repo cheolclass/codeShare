@@ -40,9 +40,10 @@ public class ObstacleSpawner : MonoBehaviour
 		//clone.GetComponent<Obstacle>().Setup(this, start, end);
 	}
 
-	public void DeactivateObject(GameObject clone)
+	/*public void DeactivateObject(GameObject clone)
 	{
 		memoryPool.DeactivatePoolItem(clone);
 	}
+	*/
 }
 
