@@ -21,27 +21,35 @@ public class Obstacle : MonoBehaviour
 		//float rotateAngle = Random.Range(10f, 720f) * moveTime;
 
 		//// 회전(OnRotate) + 이동(OnMove) 시작
-		StartCoroutine(nameof(OnRotate));
-		yield return StartCoroutine(OnMove(start, end));
-		///yield return StartCoroutine(OnMove(transform, start, end));
-		
+		//yield return StartCoroutine(OnMove(transform, start, end));
+
 		//// 이동이 끝나면 회전 중지 
-		StopCoroutine(nameof(OnRotate));
 		//StartCoroutine(TransformEffect.OnRotate(transform, Vector3.zero, Vector3.forward * rotateAngle, moveTime));
 		//yield return StartCoroutine(TransformEffect.OnMove(transform, start, end, moveTime));
 
 		//// 크기 축소(OnScale) 시작
-		yield return StartCoroutine(nameof(OnScale));
 		//StartCoroutine(TransformEffect.OnScale(transform, Vector3.one, Vector3.zero, 0.5f, OnDie));
+
+		/// ------------------------------------------
+		///	나중에, TransformEffect 클래스 추가시 
+		///	아래 코드 삭제하고 위 코드 주석 제거 	
+		/// ------------------------------------------ 
+		//// 회전(OnRotate) + 이동(OnMove) 시작
+		StartCoroutine(nameof(OnRotate));
+		yield return StartCoroutine(OnMove(start, end));
+		//// 이동이 끝나면 회전 중지 
+		StopCoroutine(nameof(OnRotate));
+		//// 크기 축소(OnScale) 시작
+		yield return StartCoroutine(nameof(OnScale));
 	}
 
 	private IEnumerator OnRotate()
 	{
 		/// forward: Z축 기준 CCW, back: CW
 		Vector3 rotateAxis = Random.value > 0.4f ? Vector3.forward : Vector3.back;
-		float rotateSpeed = Random.Range(10f, 720f); 
+		float rotateSpeed = Random.Range(10f, 720f);
 
-		while(true)
+		while (true)
 		{
 			transform.Rotate(rotateAxis, rotateSpeed * Time.deltaTime);  /// max 초당 2바퀴 
 			yield return null;
@@ -66,13 +74,13 @@ public class Obstacle : MonoBehaviour
 		Vector3 start = Vector3.one;
 		Vector3 end = Vector3.zero;
 
-		float scaleTime = 0.5f; 
-		float percent = 0f;		
+		float scaleTime = 0.5f;
+		float percent = 0f;
 
 		while (percent < 1f)
 		{
 			percent += Time.deltaTime / scaleTime;
-			transform.localScale= Vector3.Lerp(start, end, percent);
+			transform.localScale = Vector3.Lerp(start, end, percent);
 			yield return null;
 		}
 	}
