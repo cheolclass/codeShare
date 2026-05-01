@@ -33,10 +33,11 @@ public class ObstacleSpawner : MonoBehaviour
 	private void SpawnObject()
 	{
 		Vector3 start	= new Vector3(Random.Range(minX, maxX), maxY, 0f);
-		Vector3	end		= new Vector3(Random.Range(minX, maxX), minY, 0f);
+		//Vector3	end		= new Vector3(Random.Range(minX, maxX), minY, 0f);
 
-		GameObject clone = memoryPool.ActivatePoolItem(start);
-		clone.GetComponent<Obstacle>().Setup(this, start, end);
+		Instantiate(obstaclePrefab, start, Quaternion.identity);
+		//GameObject clone = memoryPool.ActivatePoolItem(start);
+		//clone.GetComponent<Obstacle>().Setup(this, start, end);
 	}
 
 	public void DeactivateObject(GameObject clone)
