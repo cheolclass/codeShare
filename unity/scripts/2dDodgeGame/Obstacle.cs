@@ -22,7 +22,8 @@ public class Obstacle : MonoBehaviour
 
 		//// 회전(OnRotate) + 이동(OnMove) 시작
 		StartCoroutine(nameof(OnRotate));
-		yield return StartCoroutine(OnMove(transform, start, end));
+		yield return StartCoroutine(OnMove(start, end));
+		///yield return StartCoroutine(OnMove(transform, start, end));
 		
 		//// 이동이 끝나면 회전 중지 
 		StopCoroutine(nameof(OnRotate));
