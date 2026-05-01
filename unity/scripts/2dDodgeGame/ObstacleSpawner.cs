@@ -9,8 +9,8 @@ public class ObstacleSpawner : MonoBehaviour
 	[SerializeField]
 	private	float		minX = -2f, maxX = 2f;		// 오브젝트 생성/목표 x 위치 범위
 	[SerializeField]
-	private	float		maxY = 5.25f;	// 오브젝트 목표, 생성 y 위치
-	//private	float		minY = -2f;	// 오브젝트 목표, 생성 y 위치
+	private	float		maxY = 5.25f;	// 오브젝트 생성 y 위치
+	private	float		minY = -2f;	// 오브젝트 목표 y 위치
 
 	//private	MemoryPool	memoryPool;
 	private	float		lastSpawnTime = 0f;
