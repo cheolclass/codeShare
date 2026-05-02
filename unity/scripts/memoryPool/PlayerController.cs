@@ -1,0 +1,32 @@
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+	[SerializeField]
+	private GameObject projectilePrefab;
+
+	private float angle = 0f;
+
+	private void Update()
+	{
+		// if (Input.GetKey(KeyCode.Space)) 
+		if (Input.GetKeyDown(KeyCode.Space))   /// 연사 방지
+		{
+			// 플레이어 위치에서 발사체 생성
+			GameObject clone = Instantiate(projectilePrefab,
+										   transform.position,
+										   Quaternion.identity);
+
+			// 발사 방향 계산 (degree => radian)
+			float rad = angle * Mathf.Deg2Rad;  
+			float x = Mathf.Cos(rad);
+			float y = Mathf.Sin(rad);
+
+			// 발사체 방향 설정
+			clone.GetComponent<Projectile>()?.Setup(new Vector2(x, y));
+
+			// 다음 발사 각도 증가 (5도씩 회전하며 발사)
+			angle += 5f;
+		}
+	}
+}
