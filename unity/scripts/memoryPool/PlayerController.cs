@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,8 +10,9 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
-		// if (Input.GetKey(KeyCode.Space)) 
-		if (Input.GetKeyDown(KeyCode.Space))   /// 연사 방지
+		// if (Input.GetKey(KeyCode.Space))  /// legacy input system
+		//if (Input.GetKeyDown(KeyCode.Space))   /// 연사 방지
+		if (Keyboard.current.spaceKey.wasPressedThisFrame)  /// 간단한 새로운 입력 시스템을 이용 
 		{
 			// 플레이어 위치에서 발사체 생성
 			GameObject clone = Instantiate(projectilePrefab,
