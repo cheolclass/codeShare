@@ -9,13 +9,13 @@ public class PlayerController2 : MonoBehaviour
 
 	private float angle = 0f;
 
-	///private void Awake()  /// 컴포넌트가 비활성화 돼도 실행됨
-	private void Start() /// 활성화 상태일 때만 실행됨
+	///private void Awake()  /// 컴포넌트가 inactive 상돼에서도 실행됨
+	private void Start() /// active 상태일때만 실행됨
 	{
 		memoryPool = new MemoryPool(projectilePrefab);
 	}
 
-	private void OnApplicationQuit()  /// 
+	private void OnApplicationQuit()  /// inactive 상돼에서도 실행됨
 	{
 		Debug.Log("Destroy all objects");
 		memoryPool?.DestroyObjects();  /// null이면 호출 자체를 안 함
