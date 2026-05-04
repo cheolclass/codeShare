@@ -16,7 +16,7 @@ public class PlayerController2 : MonoBehaviour
 
 	private void OnApplicationQuit()  /// 
 	{
-		Debut.Log("Destroy all objects");
+		Debug.Log("Destroy all objects");
 		memoryPool.DestroyObjects();
 	}
 	
