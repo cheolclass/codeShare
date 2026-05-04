@@ -3,7 +3,7 @@ using UnityEngine;
 public class Projectile2 : MonoBehaviour
 {
 	private Movement2D movement2D;
-	private MemoryPool	memoryPool;  ///
+	private MemoryPool memoryPool;  ///
 	private Vector2 limitMin = new Vector2(-8, -5);
 	private Vector2 limitMax = new Vector2(8, 5);
 
@@ -12,7 +12,7 @@ public class Projectile2 : MonoBehaviour
 		movement2D = GetComponent<Movement2D>();
 	}
 
-	public void Setup(Vector3 direction, MemoryPool	memoryPool)
+	public void Setup(Vector3 direction, MemoryPool memoryPool)
 	{
 		this.memoryPool = memoryPool;  ///
 		movement2D.MoveTo(direction);
