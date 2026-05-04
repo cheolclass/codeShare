@@ -18,7 +18,7 @@ public class PlayerController2 : MonoBehaviour
 	private void OnApplicationQuit()  /// 
 	{
 		Debug.Log("Destroy all objects");
-		memoryPool.DestroyObjects();
+		memoryPool?.DestroyObjects();  // null이면 호출 자체를 안 함
 	}
 
 	private void Update()
