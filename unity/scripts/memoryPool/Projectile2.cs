@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile2 : MonoBehaviour
 {
 	private Movement2D movement2D;
 	private MemoryPool	memoryPool;  ///
