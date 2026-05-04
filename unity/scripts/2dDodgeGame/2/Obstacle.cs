@@ -28,18 +28,6 @@ public class Obstacle : MonoBehaviour
 		// 크기 축소(OnScale) 시작
 		StartCoroutine(TransformEffect.OnScale(
 			transform, Vector3.one, Vector3.zero, 0.5f, OnDie));
-
-		/// ------------------------------------------
-		///	나중에, TransformEffect 클래스 추가시 
-		///	아래 코드 모두 삭제하고 위 코드 주석 제거 	
-		/// ------------------------------------------ 
-		////// 회전(OnRotate) + 이동(OnMove) 시작
-		//StartCoroutine(nameof(OnRotate));
-		//yield return StartCoroutine(OnMove(start, end));
-		////// 이동이 끝나면 회전 중지 
-		//StopCoroutine(nameof(OnRotate));
-		////// 크기 축소(OnScale) 시작
-		//yield return StartCoroutine(nameof(OnScale));
 	}
 
 	private IEnumerator OnRotate()
