@@ -9,7 +9,8 @@ public class PlayerController2 : MonoBehaviour
 
 	private float angle = 0f;
 
-	private void Awake()  ///
+	///private void Awake()  /// 컴포넌트가 비활성화 돼도 실행됨
+	private void Start() /// 활성화 상태일 때만 실행됨
 	{
 		memoryPool = new MemoryPool(projectilePrefab);
 	}
