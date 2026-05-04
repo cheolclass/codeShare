@@ -1,26 +1,28 @@
 using UnityEngine;
+using UnityEngine.InputSystem;  ///
 
 public class PlayerController : MonoBehaviour
 {
 	[SerializeField]
-	private	Transform		left, right;
+	private Transform left, right;
 	[SerializeField]
-	private	float			moveSpeed;
+	private float moveSpeed;
 	[SerializeField]
-	private	Vector3			moveDirection = Vector3.right;
+	private Vector3 moveDirection = Vector3.right;
 
 	private void Update()
 	{
-		// ¸¶¿ì½º Å¬¸¯ or È­¸é ÅÍÄ¡·Î ¹æÇâ ÀüÈ¯
-		if ( Input.GetMouseButtonDown(0) )
+		// ë§ˆìš°ìŠ¤ í´ë¦­ or í™”ë©´ í„°ì¹˜ë¡œ ë°©í–¥ ì „í™˜
+		//if (Input.GetMouseButtonDown(0))  /// legacy Input System 
+		if (Mouse.current.leftButton.wasPressedThisFrame)  /// ìƒˆë¡œìš´ Input System ì‚¬ìš©
 		{
 			moveDirection *= -1f;
 		}
 
-		// ÀÌµ¿ ¹æÇâÀÌ ¿À¸¥ÂÊÀÏ ¶§ ¿À¸¥ÂÊ ³¡¿¡ µµ´ÞÇÏ°Å³ª ||
-		// ÀÌµ¿ ¹æÇâÀÌ ¿ÞÂÊÀÏ ¶§ ¿ÞÂÊ ³¡¿¡ µµ´ÞÇÏ¸é ¹æÇâ ÀüÈ¯
-		if ( (moveDirection == Vector3.right && transform.position.x >= right.position.x) ||
-			 (moveDirection == Vector3.left && transform.position.x <= left.position.x) )
+		// ì´ë™ ë°©í–¥ì´ ì˜¤ë¥¸ìª½ì¼ ë•Œ ì˜¤ë¥¸ìª½ ëì— ë„ë‹¬í•˜ê±°ë‚˜ ||
+		// ì´ë™ ë°©í–¥ì´ ì™¼ìª½ì¼ ë•Œ ì™¼ìª½ ëì— ë„ë‹¬í•˜ë©´ ë°©í–¥ ì „í™˜
+		if ((moveDirection == Vector3.right && transform.position.x >= right.position.x) ||
+			 (moveDirection == Vector3.left && transform.position.x <= left.position.x))
 		{
 			moveDirection *= -1f;
 		}
@@ -28,4 +30,3 @@ public class PlayerController : MonoBehaviour
 		transform.position += moveDirection * moveSpeed * Time.deltaTime;
 	}
 }
-
