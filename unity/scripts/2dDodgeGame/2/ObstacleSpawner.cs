@@ -5,6 +5,7 @@ public class ObstacleSpawner : MonoBehaviour
 {
 	[SerializeField]
 	private GameObject obstaclePrefab;
+	
 	[SerializeField]
 	private float currentSpawnTime = 2f;        // 장애물 생성 주기
 	[SerializeField]
@@ -15,12 +16,6 @@ public class ObstacleSpawner : MonoBehaviour
 
 	//private	MemoryPool	memoryPool;
 	private float lastSpawnTime = 0f;
-
-	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -40,9 +35,6 @@ public class ObstacleSpawner : MonoBehaviour
 
 		GameObject clone = Instantiate(obstaclePrefab, start, Quaternion.identity);
 		clone.GetComponent <Obstacle>().Setup(this, start, end);
-
-		//GameObject clone = memoryPool.ActivatePoolItem(start);
-		//clone.GetComponent<Obstacle>().Setup(this, start, end);
 	}
 
 }
