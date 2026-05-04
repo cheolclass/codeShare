@@ -26,7 +26,9 @@ public class PlayerController2 : MonoBehaviour
 		///if (Input.GetKey(KeyCode.Space))   /// 연사  
 		if (Keyboard.current.spaceKey.wasPressedThisFrame)  /// 간단한 새로운 입력 시스템을 이용 
 		{
-			GameObject clone = memoryPool.ActivatePoolItem();
+			GameObject clone = memoryPool?.ActivatePoolItem();  /// null check
+			if (clone == null) return;
+
 			clone.transform.position = transform.position;
 
 			// 발사 방향 계산 (degree => radian)
@@ -43,6 +45,7 @@ public class PlayerController2 : MonoBehaviour
 		}
 		/// Esc 키
 		if (Keyboard.current.escapeKey.wasPressedThisFrame)  /// 
-			memoryPool.DeactivateAllPoolItems();
+			///memoryPool.DeactivateAllPoolItems();  /// 메모리 풀링의 취지에 맞게 이렇게 inactive로 하는것이 맞음
+			memoryPool?.DestroyObjects(); /// 굳이 삭제하고 싶다면 이렇게
 	}
 }
