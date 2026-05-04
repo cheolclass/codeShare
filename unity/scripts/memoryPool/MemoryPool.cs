@@ -27,12 +27,9 @@ public class MemoryPool
 	private	GameObject		poolObject;		// 오브젝트 풀링에서 관리하는 게임 오브젝트 프리팹
 	private	List<PoolItem>	poolItemList;	// 관리되는 모든 오브젝트를 저장하는 리스트
 
-	public	int	MaxCount	=> maxCount;	// 외부에서 현재 리스트에 등록되어 있는 오브젝트 개수 확인을 위한 프로퍼티
-	public	int	ActiveCount	=> activeCount;	// 외부에서 현재 활성화 되어 있는 오브젝트 개수 확인을 위한 프로퍼티
-
 	// 오브젝트가 임시로 보관되는 위치
-	private	Vector3	tempPosition = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
-
+	///private Vector3 tempPosition = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+	
 	public MemoryPool(GameObject poolObject)
 	{
 		maxCount		= 0;
@@ -53,13 +50,13 @@ public class MemoryPool
 			PoolItem poolItem = new PoolItem();
 
 			poolItem.gameObject = GameObject.Instantiate(poolObject);
-			poolItem.gameObject.transform.position = tempPosition;
-			poolItem.IsActive = false;
+			///poolItem.gameObject.transform.position = tempPosition;
+			poolItem.IsActive = false;  /// poolItem.gameObject.SetActive(false);
 
 			poolItemList.Add(poolItem);
 		}
 	}
-
+	
 	public void DestroyObjects()
 	{
 		if ( poolItemList == null ) return;
@@ -73,7 +70,7 @@ public class MemoryPool
 		poolItemList.Clear();
 	}
 
-	public GameObject ActivatePoolItem(Vector3 position)
+	public GameObject ActivatePoolItem() ///Vector3 position)
 	{
 		if ( poolItemList == null ) return null;
 
@@ -93,8 +90,8 @@ public class MemoryPool
 			{
 				activeCount ++;
 
-				poolItem.gameObject.transform.position	= position;
-				poolItem.IsActive						= true;
+				///poolItem.gameObject.transform.position	= position;
+				poolItem.IsActive	= true;
 
 				return poolItem.gameObject;
 			}
@@ -116,8 +113,8 @@ public class MemoryPool
 			{
 				activeCount --;
 
-				poolItem.IsActive						= false;
-				poolItem.gameObject.transform.position	= tempPosition;
+				poolItem.IsActive = false;
+				///poolItem.gameObject.transform.position	= tempPosition;
 
 				return;
 			}
@@ -135,8 +132,8 @@ public class MemoryPool
 
 			if ( poolItem.gameObject != null && poolItem.IsActive == true )
 			{
-				poolItem.IsActive						= false;
-				poolItem.gameObject.transform.position	= tempPosition;
+				poolItem.IsActive = false;
+				///poolItem.gameObject.transform.position	= tempPosition;
 			}
 		}
 
