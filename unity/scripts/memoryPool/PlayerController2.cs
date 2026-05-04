@@ -41,6 +41,6 @@ public class PlayerController2 : MonoBehaviour
 		}
 		/// Esc 키
 		if (Keyboard.current.escapeKey.wasPressedThisFrame)  /// 
-			memoryPool.DeactivatePoolItem();
+			memoryPool.DeactivateAllPoolItems();
 	}
 }
