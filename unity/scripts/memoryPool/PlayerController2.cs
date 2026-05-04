@@ -5,6 +5,7 @@ public class PlayerController2 : MonoBehaviour
 {
 	[SerializeField]
 	private GameObject projectilePrefab;
+	private MemoryPool	memoryPool;  ///
 
 	private float angle = 0f;
 
