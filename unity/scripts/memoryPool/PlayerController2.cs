@@ -34,7 +34,8 @@ public class PlayerController2 : MonoBehaviour
 			float y = Mathf.Sin(rad);
 
 			// 발사체 방향 설정
-			clone.GetComponent<Projectile>()?.Setup(new Vector2(x, y));
+			///clone.GetComponent<Projectile>()?.Setup(new Vector2(x, y));
+			clone.GetComponent<Projectile>()?.Setup(new Vector2(x, y), memoryPool);  /// 
 
 			// 다음 발사 각도 증가 (5도씩 회전하며 발사)
 			angle += 5f;
