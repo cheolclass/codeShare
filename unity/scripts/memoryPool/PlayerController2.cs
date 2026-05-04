@@ -26,6 +26,9 @@ public class PlayerController2 : MonoBehaviour
 		///if (Input.GetKey(KeyCode.Space))   /// 연사  
 		if (Keyboard.current.spaceKey.wasPressedThisFrame)  /// 간단한 새로운 입력 시스템을 이용 
 		{
+			if(memoryPool == null)  /// memoryPool이 null 경우: 처음 실행시 또는 Esc 키로 모든 오브젝트를 삭제한 후에 다시 Space 키를 눌렀을 때  
+				memoryPool = new MemoryPool(projectilePrefab);
+
 			GameObject clone = memoryPool?.ActivatePoolItem();  /// null check
 			if (clone == null) return;
 
@@ -45,7 +48,10 @@ public class PlayerController2 : MonoBehaviour
 		}
 		/// Esc 키
 		if (Keyboard.current.escapeKey.wasPressedThisFrame)  /// 
+		{		
 			///memoryPool.DeactivateAllPoolItems();  /// 메모리 풀링의 취지에 맞게 이렇게 inactive로 하는것이 맞음
 			memoryPool?.DestroyObjects(); /// 굳이 삭제하고 싶다면 이렇게
+			memoryPool = null;  /// 메모리 풀 자체도 null로 만들어서 다시 Space 키를 눌렀을 때 새롭게 생성되도록 함 
+		}
 	}
 }
