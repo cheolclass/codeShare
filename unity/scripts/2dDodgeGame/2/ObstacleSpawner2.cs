@@ -36,7 +36,16 @@ public class ObstacleSpawner2 : MonoBehaviour
 		Vector3 end = new Vector3(Random.Range(minX, maxX), minY, 0f);
 
 		GameObject clone = memoryPool.ActivatePoolItem(start);
-		clone.GetComponent<Obstacle2>().Setup(this, start, end);  /// 
+		///clone.GetComponent<Obstacle2>().Setup(this, start, end);  /// 
+		if (clone.TryGetComponent<Obstacle2>(out var obstacle))  /// check: 객체 null & 컴포넌트 존재 여부
+		{
+			obstacle.Setup(this, start, end);
+		}
+		else
+		{
+			Debug.LogError($"Obstacle 컴포넌트 없음! Prefab: {obstaclePrefab.name}");
+			Destroy(clone);
+		}
 	}
 
 	public void DeactivateObject(GameObject clone)
