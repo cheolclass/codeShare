@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	private Transform left, right;
 	[SerializeField]
-	private float moveSpeed;
+	private float moveSpeed = 3;  /// 
+	
 	[SerializeField]
 	private Vector3 moveDirection = Vector3.right;
 
