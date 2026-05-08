@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
 	[SerializeField]
 	private Transform left, right;
+	
 	[SerializeField]
 	private float moveSpeed = 3;  /// 
 	
