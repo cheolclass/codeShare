@@ -1,15 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-public class Obstacle3 : MonoBehaviour
+public class Obstacle4 : MonoBehaviour
 {
-	private ObstacleSpawner3 spawner;
+	private ObstacleSpawner4 spawner;
 
-	public void Setup(ObstacleSpawner3 spawner, Vector3 start, Vector3 end)
+	public void Setup(ObstacleSpawner4 spawner, Vector3 start, Vector3 end)
 	{
 		this.spawner = spawner;
 
-		Reset();  ///
+		Reset();
 		StartCoroutine(Process(start, end));
 	}
 
@@ -19,11 +19,7 @@ public class Obstacle3 : MonoBehaviour
 		float rotateAngle = Random.Range(10f, 720f) * moveTime;
 
 		// 회전(OnRotate) + 이동(OnMove) 시작
-		//StartCoroutine(OnRotate());		
-		//StartCoroutine(TransformEffect.OnRotate(transform, Vector3.zero, Vector3.forward * rotateAngle, moveTime));
 		Coroutine 	rotateRoutine = StartCoroutine(TransformEffect.OnRotate(transform, Vector3.zero, Vector3.forward * rotateAngle, moveTime));
-		
-		//yield return StartCoroutine(OnMove(start, end));
 		yield return StartCoroutine(TransformEffect.OnMove(transform, start, end, moveTime));
 
 		// 이동이 끝나면 회전 중지
@@ -33,8 +29,6 @@ public class Obstacle3 : MonoBehaviour
 		} 
 
 		// 크기 축소(OnScale) 시작
-		//StartCoroutine(OnScale());
-		//StartCoroutine(TransformEffect.OnScale(transform, Vector3.one, Vector3.zero, 0.5f));  /// 
 		StartCoroutine(TransformEffect.OnScale(transform, Vector3.one, Vector3.zero, 0.5f, OnDie));  /// 
 	}
 

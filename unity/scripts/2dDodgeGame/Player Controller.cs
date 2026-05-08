@@ -4,6 +4,9 @@ using UnityEngine.InputSystem;  ///
 public class PlayerController : MonoBehaviour
 {
 	[SerializeField]
+	private	GameController	gameController;  /// 
+
+	[SerializeField]
 	private Transform left, right;
 	[SerializeField]
 	private float moveSpeed;
@@ -12,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
+		if(gameController.IsGameStart == false)	return;	/// 
+
 		// 마우스 클릭 or 화면 터치로 방향 전환
 		//if (Input.GetMouseButtonDown(0))  /// legacy Input System 
 		if (Mouse.current.leftButton.wasPressedThisFrame)  /// 새로운 Input System 사용
@@ -25,6 +30,7 @@ public class PlayerController : MonoBehaviour
 			 (moveDirection == Vector3.left && transform.position.x <= left.position.x))
 		{
 			moveDirection *= -1f;
+			gameController.Score += 2;		// 플레이어가 양쪽 끝에 도달할 때마다 점수 +2  ///
 		}
 
 		transform.position += moveDirection * moveSpeed * Time.deltaTime;
