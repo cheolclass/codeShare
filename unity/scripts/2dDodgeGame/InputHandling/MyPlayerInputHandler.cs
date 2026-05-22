@@ -19,7 +19,7 @@ public class MyPlayerInputHandler : MonoBehaviour
 	private void Awake()
 	{
 		// Player 오브젝트에서 Rigidbody2D를 가져옴 
-		GameObject gameObj = GameObject.FindWithTag("Player");
+		GameObject gameObj = GameObject.FindWithTag("Player");  /// 
 		if (gameObj)
 		{
 			playerRb = gameObj.GetComponent<Rigidbody2D>(); // 플레이어 속도 파악용
