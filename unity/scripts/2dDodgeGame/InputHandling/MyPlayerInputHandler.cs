@@ -4,7 +4,9 @@ using System.Collections;
 
 public class MyPlayerInputHandler : MonoBehaviour
 {
-	private @MyInputActions controls;
+	//private @MyInputActions controls;
+	private @MyTestActions controls;  ///  
+
 	private SpriteRenderer playerRenderer;
 	private Color originalColor;
 
@@ -19,7 +21,7 @@ public class MyPlayerInputHandler : MonoBehaviour
 	private void Awake()
 	{
 		// Player 오브젝트에서 Rigidbody2D를 가져옴 
-		GameObject gameObj = GameObject.FindWithTag("Player");  /// 
+		GameObject gameObj = GameObject.FindWithTag("Player");  ///
 		if (gameObj)
 		{
 			playerRb = gameObj.GetComponent<Rigidbody2D>(); // 플레이어 속도 파악용
@@ -40,7 +42,7 @@ public class MyPlayerInputHandler : MonoBehaviour
 		// 2. controls가 null이면 생성하고 이벤트를 연결 
 		if (controls == null)
 		{
-			controls = new @MyInputActions();
+			controls = new @MyTestActions();
 			SetupInputEvents(); // 여기서 함수를 호출 
 		}
 		controls.Enable();
@@ -50,15 +52,15 @@ public class MyPlayerInputHandler : MonoBehaviour
 	private void SetupInputEvents()
 	{
 		// 키를 눌렀을 때
-		controls.MyPlayer.MyAttack.started += ctx => {
+		controls.MyPlayer.MyAttack.started += ctx => {  /// callback context. 콜백 메서드 등록 
 			Debug.Log("난사 시작!!");
 			if (playerRenderer) playerRenderer.color = Color.red;
 			if (shootingCoroutine == null)
-				shootingCoroutine = StartCoroutine(ShootRoutine());
+				shootingCoroutine = StartCoroutine(ShootRoutine());  /// 추후 중지를 위해 변수에 저장 
 		};
 
 		// 키를 뗐을 때
-		controls.MyPlayer.MyAttack.canceled += ctx => {
+		controls.MyPlayer.MyAttack.canceled += ctx => { 
 			Debug.Log("난사 중지");
 			if (playerRenderer) playerRenderer.color = originalColor;
 			if (shootingCoroutine != null)
@@ -84,7 +86,7 @@ public class MyPlayerInputHandler : MonoBehaviour
 				GameObject bulletGo = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
 
 				// 2. 총알의 스크립트를 가져와서 플레이어의 현재 속도를 전달
-				BulletSpawner bulletScript = bulletGo.GetComponent<BulletSpawner>();
+				BulletController bulletScript = bulletGo.GetComponent<BulletController>();
 				if (bulletScript != null && playerRb != null)
 				{
 					// 플레이어의 현재 속도(이동 방향과 힘)를 총알에 주입
