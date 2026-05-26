@@ -23,4 +23,21 @@ public class BulletController: MonoBehaviour
 	{
 		Destroy(gameObject, 2f);
 	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		// 부딪힌 대상이 장애물("myObstacle") 태그를 가지고 있다면
+		if (collision.CompareTag("myObstacle"))
+		{
+			// 1. 장애물 오브젝트에서 방금 만든 ObstacleController 스크립트를 안전하게 캡처
+			if (collision.TryGetComponent<ObstacleController>(out var obstacle))  /// obstacle의 생명주기: 메소드 전체
+			{
+				// 2. 장애물의 파괴 효과 및 프로세스 가동!
+				obstacle.DestroyObstacle();
+			}
+
+			// 3. 장애물과 부딪힌 총알 자신도 그 자리에서 즉시 삭제
+			Destroy(gameObject);
+		}
+	}
 }
