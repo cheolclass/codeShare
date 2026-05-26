@@ -30,7 +30,7 @@ public class BulletController: MonoBehaviour
 		if (collision.CompareTag("myObstacle"))
 		{
 			// 1. 장애물 오브젝트에서 방금 만든 ObstacleController 스크립트를 안전하게 캡처
-			if (collision.TryGetComponent<ObstacleController>(out var obstacle))
+			if (collision.TryGetComponent<ObstacleController>(out var obstacle))  /// obstacle의 생명주기: 메소드 전체
 			{
 				// 2. 장애물의 파괴 효과 및 프로세스 가동!
 				obstacle.DestroyObstacle();
