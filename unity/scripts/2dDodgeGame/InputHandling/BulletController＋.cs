@@ -24,6 +24,7 @@ public class BulletController: MonoBehaviour
 		Destroy(gameObject, 2f);
 	}
 
+	/// 추가
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		// 부딪힌 대상이 장애물("myObstacle") 태그를 가지고 있다면
